@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import Draggable from 'react-draggable';
-import Resizable from 're-resizable';
-import type { ResizeDirection, ResizeCallback, ResizeStartCallback } from 're-resizable';
+import Draggable from 'react-draggable-rotate';
+import Resizable from 're-resizable-rotate';
+import type { ResizeDirection, ResizeCallback, ResizeStartCallback } from 're-resizable-rotate';
 
 export type Grid = [number, number];
 
@@ -423,6 +423,15 @@ export default class Rnd extends React.Component<Props, State> {
     // HACK: Wait for setting relative to parent element.
     if (!this.state.isMounted) return <div />;
     const maxHeight = this.props._freeBottomBounds ? 2147483647 : this.state.maxHeight; // eslint-disable-line
+    let degree = 0;
+    if (this.resizable && this.resizable.degree) {
+      degree = this.resizable.degree;
+    }
+    let position = { x: 0, y: 0 };
+    if (this.draggable && this.draggable.positionRotate) {
+      position = this.draggable.positionRotate;
+    }
+    console.log('position,degree', position, degree, this.props.position);
     return (
       <Draggable
         ref={(c: Draggable) => { this.draggable = c; }}
@@ -437,6 +446,7 @@ export default class Rnd extends React.Component<Props, State> {
         bounds={this.props.bounds ? this.state.bounds : undefined}
         position={this.props.position}
         enableUserSelectHack={false}
+        degree={degree}
       >
         <Resizable
           {...this.props.extendsProps}
@@ -446,6 +456,7 @@ export default class Rnd extends React.Component<Props, State> {
           }}
           defaultSize={this.props.default}
           size={this.props.size}
+          position={position}
           enable={this.props.enableResizing}
           onResizeStart={this.onResizeStart}
           onResize={this.onResize}

@@ -1,8 +1,8 @@
 {
-  "name": "react-rnd",
-  "version": "7.1.5",
+  "name": "react-rnd-rotate",
+  "version": "0.0.1",
   "description": "",
-  "title": "react-rnd",
+  "title": "react-rnd-rotate",
   "main": "./lib/index.es5.js",
   "module": "./lib/index.js",
   "jsnext:main": "./lib/index.js",
@@ -90,7 +90,7 @@
     "fixture": "./fixture.html"
   },
   "dependencies": {
-    "re-resizable": "^4.0.0",
-    "react-draggable": "^3.0.3"
+    "re-resizable-rotate": "^0.0.5",
+    "react-draggable-rotate": "^0.0.2"
   }
 }
