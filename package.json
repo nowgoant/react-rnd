@@ -30,14 +30,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bokuweb/react-rnd.git"
+    "url": "https://github.com/nowgoant/react-rnd.git"
   },
   "author": "bokuweb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bokuweb/react-rnd/issues"
+    "url": "https://github.com/nowgoant/react-rnd/issues"
   },
-  "homepage": "https://github.com/bokuweb/react-rnd",
+  "homepage": "https://github.com/nowgoant/react-rnd",
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.6",
     "@storybook/addon-links": "^3.2.6",
