@@ -1,7 +1,7 @@
 {
   "name": "react-rnd-rotate",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "A resizable and draggable and rotate component for React",
   "title": "react-rnd-rotate",
   "main": "./lib/index.es5.js",
   "module": "./lib/index.js",
