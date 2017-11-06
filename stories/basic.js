@@ -102,8 +102,11 @@ export default () => (
       leftCenter: handleLeftCenterStyles,
       rotate: handleRotateStyles,
     }}
-    onResizeStop={(event, direction, resizable, delta) => {
-      console.log('delta', delta)
+    onResize={(event, direction, resizable, delta, position) => {
+      console.log('delta', Object.assign(delta, position))
+    }}
+    onResizeStop={(event, direction, resizable, delta, position) => {
+      console.log('delta', Object.assign(delta, position))
     }}
     onDragStart={(e, data) => {
       console.log('delta', data)

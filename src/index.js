@@ -278,6 +278,10 @@ export default class Rnd extends React.Component<Props, State> {
   onDrag(e: Event, data: DraggableData) {
     if (this.props.onDrag) {
       data.degree = this.degree
+      if (this.resizable) {
+        data.newWidth = this.resizable.size.width
+        data.newHeight = this.resizable.size.height
+      }
       this.props.onDrag(e, data);
     }
   }
@@ -285,6 +289,10 @@ export default class Rnd extends React.Component<Props, State> {
   onDragStop(e: Event, data: DraggableData) {
     if (this.props.onDragStop) {
       data.degree = this.degree
+      if (this.resizable) {
+        data.newWidth = this.resizable.size.width
+        data.newHeight = this.resizable.size.height
+      }
       this.props.onDragStop(e, data);
     }
   }
