@@ -91,6 +91,6 @@
   },
   "dependencies": {
     "re-resizable-rotate": "^0.0.6",
-    "react-draggable-rotate": "^0.0.2"
+    "react-draggable-rotate": "^0.0.3"
   }
 }
