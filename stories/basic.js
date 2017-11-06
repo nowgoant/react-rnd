@@ -105,6 +105,15 @@ export default () => (
     onResizeStop={(event, direction, resizable, delta) => {
       console.log('delta', delta)
     }}
+    onDragStart={(e, data) => {
+      console.log('delta', data)
+    }}
+    onDrag={(e, data) => {
+      console.log('delta', data)
+    }}
+    onDragStop={(e, data) => {
+      console.log('delta', data)
+    }}
   >
     001
   </Rnd>

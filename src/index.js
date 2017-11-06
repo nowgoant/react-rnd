@@ -192,6 +192,7 @@ export default class Rnd extends React.Component<Props, State> {
       maxHeight: props.maxHeight,
       isMounted: false,
     };
+    this.degree = props.degree || 0;
     this.onResizeStart = this.onResizeStart.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onResizeStop = this.onResizeStop.bind(this);
@@ -244,6 +245,7 @@ export default class Rnd extends React.Component<Props, State> {
 
   onDragStart(e: Event, data: DraggableData) {
     if (this.props.onDragStart) {
+      data.degree = this.degree
       this.props.onDragStart(e, data);
     }
     if (!this.props.bounds) return;
@@ -275,12 +277,14 @@ export default class Rnd extends React.Component<Props, State> {
 
   onDrag(e: Event, data: DraggableData) {
     if (this.props.onDrag) {
+      data.degree = this.degree
       this.props.onDrag(e, data);
     }
   }
 
   onDragStop(e: Event, data: DraggableData) {
     if (this.props.onDragStop) {
+      data.degree = this.degree
       this.props.onDragStop(e, data);
     }
   }
@@ -426,6 +430,7 @@ export default class Rnd extends React.Component<Props, State> {
     let degree = 0;
     if (this.resizable && this.resizable.degree) {
       degree = this.resizable.degree;
+      this.degree = degree
     }
     let position = { x: 0, y: 0 };
     if (this.draggable && this.draggable.positionRotate) {
