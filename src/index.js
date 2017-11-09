@@ -371,6 +371,7 @@ export default class Rnd extends React.Component<Props, State> {
   ) {
     let x;
     let y;
+
     if (/left/i.test(direction)) {
       x = this.state.original.x - delta.width;
       this.draggable.setState({ x });
@@ -380,6 +381,7 @@ export default class Rnd extends React.Component<Props, State> {
       this.draggable.setState({ y });
     }
     if (this.props.onResize) {
+      delta.degree = delta.degree || this.degree
       this.props.onResize(
         e,
         direction,
@@ -405,6 +407,7 @@ export default class Rnd extends React.Component<Props, State> {
         x: this.draggable.state.x,
         y: this.draggable.state.y,
       };
+      delta.degree = delta.degree || this.degree
       this.props.onResizeStop(e, direction, refToResizableElement, delta, position);
     }
   }
