@@ -441,6 +441,7 @@ export default class Rnd extends React.Component<Props, State> {
       this.degree = degree;
     } else if (this.props.default) {
       degree = this.props.default.degree;
+      this.degree = degree;
     }
     let position = { x: 0, y: 0 };
     if (this.draggable && this.draggable.positionRotate) {

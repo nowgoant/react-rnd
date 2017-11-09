@@ -105,19 +105,19 @@ export default () => (
       rotate: handleRotateStyles,
     }}
     onResize={(event, direction, resizable, delta, position) => {
-      console.log('delta', Object.assign(delta, position))
+      console.log('onResize', Object.assign(delta, position))
     }}
     onResizeStop={(event, direction, resizable, delta, position) => {
-      console.log('delta', Object.assign(delta, position))
+      console.log('onResizeStop', Object.assign(delta, position))
     }}
     onDragStart={(e, data) => {
-      console.log('delta', data)
+      console.log('onDragStart', data)
     }}
     onDrag={(e, data) => {
-      console.log('delta', data)
+      console.log('onDrag', data)
     }}
     onDragStop={(e, data) => {
-      console.log('delta', data)
+      console.log('onDragStop', data)
     }}
   >
     001
