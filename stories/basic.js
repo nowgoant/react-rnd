@@ -9,8 +9,9 @@ const style = {
   justifyContent: 'center',
   border: 'solid 1px #ddd',
   background: '#f0f0f0',
-  marginTop: '100px',
-  marginLeft: '100px',
+  marginTop: '50px',
+  marginLeft: '50px',
+  zIndex: 10
 };
 
 const handleTopLeftStyles = {
@@ -76,8 +77,9 @@ export default () => (
     default={{
       width: 200,
       height: 200,
-      x: 100,
-      y: 100,
+      x: 10,
+      y: 20,
+      degree: 30
     }}
     className={'rnd-resizable1'}
     resizeHandleClasses={{
