@@ -1,6 +1,6 @@
 {
   "name": "react-rnd-rotate",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A resizable and draggable and rotate component for React",
   "title": "react-rnd-rotate",
   "main": "./lib/index.es5.js",
@@ -90,7 +90,7 @@
     "fixture": "./fixture.html"
   },
   "dependencies": {
-    "re-resizable-rotate": "^0.0.7",
+    "re-resizable-rotate": "^0.0.8",
     "react-draggable-rotate": "^0.0.3"
   }
 }

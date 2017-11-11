@@ -412,9 +412,9 @@ export default class Rnd extends React.Component<Props, State> {
     }
   }
 
-  updateSize(size: { width: number | string, height: number | string }) {
+  updateSize(size: { width: number | string, height: number | string, degree: number | string }) {
     if (!this.resizable) return;
-    this.resizable.updateSize({ width: size.width, height: size.height });
+    this.resizable.updateSize({ width: size.width, height: size.height, degree: size.degree });
   }
 
   updatePosition(position: Position) {

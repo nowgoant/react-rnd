@@ -73,6 +73,9 @@ const handleRotateStyles = {
 
 export default () => (
   <Rnd
+    ref={(c) => {
+      this.rnd = c;
+    }}
     style={style}
     default={{
       width: 200,
@@ -109,6 +112,9 @@ export default () => (
     }}
     onResizeStop={(event, direction, resizable, delta, position) => {
       console.log('onResizeStop', Object.assign(delta, position))
+      this.rnd.updateSize({ width: 200, height: 200 })
+      this.rnd.updateSize({ degree: 10 })
+      this.rnd.updateSize({})
     }}
     onDragStart={(e, data) => {
       console.log('onDragStart', data)
