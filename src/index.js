@@ -450,7 +450,7 @@ export default class Rnd extends React.Component<Props, State> {
     if (this.draggable && this.draggable.positionRotate) {
       position = this.draggable.positionRotate;
     }
-    console.log('position,degree', position, degree, this.props.position);
+    // console.log('position,degree', position, degree, this.props.position);
     return (
       <Draggable
         ref={(c: Draggable) => { this.draggable = c; }}
