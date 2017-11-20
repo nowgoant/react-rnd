@@ -65,10 +65,12 @@ const handleLeftCenterStyles = {
   marginTop: '-6px',
 }
 const handleRotateStyles = {
-  width: '10px',
-  height: '10px',
+  width: '16px',
+  height: '16px',
   left: '50%',
-  marginLeft: '-6px',
+  marginLeft: '-8px',
+  border: 'none',
+  borderRadius: 'initial',
 }
 
 export default () => (
