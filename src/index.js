@@ -6,6 +6,7 @@ import Draggable from 'react-draggable-rotate';
 import Resizable from 're-resizable-rotate';
 import type { ResizeDirection, ResizeCallback, ResizeStartCallback } from 're-resizable-rotate';
 
+// console.log('Draggable', Draggable.DraggableAlignGuide);
 export type Grid = [number, number];
 
 export type Position = {
@@ -118,6 +119,7 @@ type Props = {
   onDragStart?: RndDragCallback;
   onDrag?: RndDragCallback;
   onDragStop?: RndDragCallback;
+  onMoveSnap?: any;
   className?: string;
   style?: Style;
   children?: React.Node;
@@ -166,6 +168,7 @@ export default class Rnd extends React.Component<Props, State> {
   onDragStart: RndDragCallback;
   onDrag: RndDragCallback;
   onDragStop: RndDragCallback;
+  onMoveSnap: any;
   getMaxSizesFromProps: () => ({
     maxWidth: number | string;
     maxHeight: number | string;
@@ -297,6 +300,14 @@ export default class Rnd extends React.Component<Props, State> {
     }
   }
 
+  onMoveSnap(data: any) {
+    if (this.props.onMoveSnap) {
+      data.degree = this.degree
+
+      this.props.onMoveSnap(data);
+    }
+  }
+
   onResizeStart(
     e: SyntheticMouseEvent<HTMLDivElement> | SyntheticTouchEvent<HTMLDivElement>,
     dir: ResizeDirection,
@@ -421,10 +432,13 @@ export default class Rnd extends React.Component<Props, State> {
     this.draggable.setState(position);
   }
 
+  updateMoveSnap(snap: any) {
+    this.draggable.moveSnaping(snap);
+  }
+
   updateZIndex(z: number) {
     this.setState({ z });
   }
-
   render(): React.Node {
     const cursorStyle = this.props.disableDragging || this.props.dragHandleClassName
       ? { cursor: 'normal' }
@@ -459,6 +473,7 @@ export default class Rnd extends React.Component<Props, State> {
         onStart={this.onDragStart}
         onDrag={this.onDrag}
         onStop={this.onDragStop}
+        onMoveSnap={this.onMoveSnap}
         axis={this.props.dragAxis}
         disabled={this.props.disableDragging}
         grid={this.props.dragGrid}
