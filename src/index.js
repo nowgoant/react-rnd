@@ -120,9 +120,9 @@ type Props = {
   onDrag?: RndDragCallback;
   onDragStop?: RndDragCallback;
   onMoveSnap?: any;
-  onKeyUp?: any,
-  onKeyDown?: any,
-  onKeyMove?: any,
+  onKeyUp?: any;
+  onKeyDown?: any;
+  onKeyMove?: any;
   className?: string;
   style?: Style;
   children?: React.Node;
@@ -165,7 +165,7 @@ export default class Rnd extends React.Component<Props, State> {
     onMoveSnap: () => { },
     onKeyUp: () => { },
     onKeyDown: () => { },
-    onKeyMove: () => { },
+    onKeyMove: () => { }
   };
   resizable: (React$ElementRef<typeof Resizable> | null);
   draggable: Draggable;
@@ -176,9 +176,9 @@ export default class Rnd extends React.Component<Props, State> {
   onDrag: RndDragCallback;
   onDragStop: RndDragCallback;
   onMoveSnap: any;
-  onKeyUp: any,
-  onKeyDown: any,
-  onKeyMove: any,
+  onKeyUp: any;
+  onKeyDown: any;
+  onKeyMove: any;
   getMaxSizesFromProps: () => ({
     maxWidth: number | string;
     maxHeight: number | string;
