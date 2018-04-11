@@ -25,7 +25,7 @@ let guide = null
 export default () => {
 
   setTimeout(() => {
-    guide.chart();
+    guide.refresh();
   }, 300)
 
   return (

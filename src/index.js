@@ -137,6 +137,7 @@ type Props = {
   maxWidth?: number | string;
   minHeight?: number | string;
   minWidth?: number | string;
+  keyMoveShiftStepLength?: number;
   dragAxis?: 'x' | 'y' | 'both' | 'none';
   dragHandleClassName?: string;
   disableDragging?: boolean;
@@ -156,6 +157,7 @@ export default class Rnd extends React.Component<Props, State> {
   static defaultProps = {
     maxWidth: Number.MAX_SAFE_INTEGER,
     maxHeight: Number.MAX_SAFE_INTEGER,
+    keyMoveShiftStepLength: 10,
     onResizeStart: () => { },
     onResize: () => { },
     onResizeStop: () => { },
@@ -218,7 +220,6 @@ export default class Rnd extends React.Component<Props, State> {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyMove = this.onKeyMove.bind(this);
   }
-
 
   componentWillReceiveProps(nextProps: Props) {
     if (this.props.z !== nextProps.z) {
@@ -512,6 +513,7 @@ export default class Rnd extends React.Component<Props, State> {
         position={this.props.position}
         enableUserSelectHack={false}
         degree={degree}
+        keyMoveShiftStepLength={this.props.keyMoveShiftStepLength}
       >
         <Resizable
           {...this.props.extendsProps}
