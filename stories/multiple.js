@@ -12,9 +12,12 @@ const style = {
   border: 'solid 1px #ddd',
   background: '#f0f0f0',
 };
-
-const onSnaping = () => {
-
+const rndTemp = {}
+let _currentRND = null
+const onSnaping = (snap) => {
+  if (_currentRND) {
+    _currentRND.draggable.moveSnaping(snap)
+  }
 }
 
 let guide = null
@@ -23,14 +26,16 @@ export default () => {
 
   setTimeout(() => {
     guide.chart();
-  }, 1000)
+  }, 300)
 
   return (
     <DraggableAlignGuide
       ref={(o) => { guide = o }}
-      className="DraggableAlignGuide"
+      wrapperProps={{
+        className: "DraggableAlignGuide"
+      }}
       onSnaping={onSnaping}
-      snapTreshhold={2}
+      snapTreshhold={5}
       style={{
         width: '100%',
         height: '100%',
@@ -38,6 +43,7 @@ export default () => {
     >
       {[...Array(3).keys()].map((_, i) => {
         return <Rnd
+          ref={(e) => { rndTemp[i] = e }}
           bounds="parent"
           style={style}
           default={{
@@ -45,6 +51,9 @@ export default () => {
             height: 200,
             x: 100 * i,
             y: 100 * i,
+          }}
+          onDrag={(e, data) => {
+            _currentRND = rndTemp[i]
           }}
         >
           00{i}

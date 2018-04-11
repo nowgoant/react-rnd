@@ -159,6 +159,7 @@ export default class Rnd extends React.Component<Props, State> {
     onDragStart: () => { },
     onDrag: () => { },
     onDragStop: () => { },
+    onMoveSnap: () => { },
   };
   resizable: (React$ElementRef<typeof Resizable> | null);
   draggable: Draggable;
@@ -203,6 +204,7 @@ export default class Rnd extends React.Component<Props, State> {
     this.onDrag = this.onDrag.bind(this);
     this.onDragStop = this.onDragStop.bind(this);
     this.getMaxSizesFromProps = this.getMaxSizesFromProps.bind(this);
+    this.onMoveSnap = this.onMoveSnap.bind(this);
   }
 
 
