@@ -120,6 +120,9 @@ type Props = {
   onDrag?: RndDragCallback;
   onDragStop?: RndDragCallback;
   onMoveSnap?: any;
+  onKeyUp?: any,
+  onKeyDown?: any,
+  onKeyMove?: any,
   className?: string;
   style?: Style;
   children?: React.Node;
@@ -160,6 +163,9 @@ export default class Rnd extends React.Component<Props, State> {
     onDrag: () => { },
     onDragStop: () => { },
     onMoveSnap: () => { },
+    onKeyUp: () => { },
+    onKeyDown: () => { },
+    onKeyMove: () => { },
   };
   resizable: (React$ElementRef<typeof Resizable> | null);
   draggable: Draggable;
@@ -170,6 +176,9 @@ export default class Rnd extends React.Component<Props, State> {
   onDrag: RndDragCallback;
   onDragStop: RndDragCallback;
   onMoveSnap: any;
+  onKeyUp: any,
+  onKeyDown: any,
+  onKeyMove: any,
   getMaxSizesFromProps: () => ({
     maxWidth: number | string;
     maxHeight: number | string;
@@ -205,6 +214,9 @@ export default class Rnd extends React.Component<Props, State> {
     this.onDragStop = this.onDragStop.bind(this);
     this.getMaxSizesFromProps = this.getMaxSizesFromProps.bind(this);
     this.onMoveSnap = this.onMoveSnap.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyMove = this.onKeyMove.bind(this);
   }
 
 
@@ -309,7 +321,21 @@ export default class Rnd extends React.Component<Props, State> {
       this.props.onMoveSnap(data);
     }
   }
-
+  onKeyUp(e: Event) {
+    if (this.props.onKeyUp) {
+      this.props.onKeyUp(e, this);
+    }
+  }
+  onKeyDown(e: Event) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(e, this);
+    }
+  }
+  onKeyMove(e: Event, data: any) {
+    if (this.props.onKeyMove) {
+      this.props.onKeyMove(e, data, this);
+    }
+  }
   onResizeStart(
     e: SyntheticMouseEvent<HTMLDivElement> | SyntheticTouchEvent<HTMLDivElement>,
     dir: ResizeDirection,
@@ -476,6 +502,9 @@ export default class Rnd extends React.Component<Props, State> {
         onDrag={this.onDrag}
         onStop={this.onDragStop}
         onMoveSnap={this.onMoveSnap}
+        onKeyUp={this.onKeyUp}
+        onKeyDown={this.onKeyDown}
+        onKeyMove={this.onKeyMove}
         axis={this.props.dragAxis}
         disabled={this.props.disableDragging}
         grid={this.props.dragGrid}
