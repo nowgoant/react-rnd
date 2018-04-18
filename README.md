@@ -36,13 +36,13 @@
 - use npm
 
 ```sh
-npm i -S react-rnd
+npm i -S react-rnd-rotate
 ```
 
 - use yarn
 
 ```sh
-yarn add react-rnd
+yarn add react-rnd-rotate
 ```
 
 ## Usage
