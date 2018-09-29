@@ -137,6 +137,8 @@ type Props = {
   maxWidth?: number | string;
   minHeight?: number | string;
   minWidth?: number | string;
+  keyMoveEnabled?: boolean;
+  keyMoveSpeed?: number;
   keyMoveShiftStepLength?: number;
   dragAxis?: 'x' | 'y' | 'both' | 'none';
   dragHandleClassName?: string;
@@ -157,6 +159,8 @@ export default class Rnd extends React.Component<Props, State> {
   static defaultProps = {
     maxWidth: Number.MAX_SAFE_INTEGER,
     maxHeight: Number.MAX_SAFE_INTEGER,
+    keyMoveEnabled: true,
+    keyMoveSpeed: 250,
     keyMoveShiftStepLength: 10,
     onResizeStart: () => { },
     onResize: () => { },
@@ -167,7 +171,7 @@ export default class Rnd extends React.Component<Props, State> {
     onMoveSnap: () => { },
     onKeyUp: () => { },
     onKeyDown: () => { },
-    onKeyMove: () => { }
+    onKeyMove: () => { },
   };
   resizable: (React$ElementRef<typeof Resizable> | null);
   draggable: Draggable;
@@ -263,7 +267,7 @@ export default class Rnd extends React.Component<Props, State> {
 
   onDragStart(e: Event, data: DraggableData) {
     if (this.props.onDragStart) {
-      data.degree = this.degree
+      data.degree = this.degree;
       this.props.onDragStart(e, data);
     }
     if (!this.props.bounds) return;
@@ -295,10 +299,10 @@ export default class Rnd extends React.Component<Props, State> {
 
   onDrag(e: Event, data: DraggableData) {
     if (this.props.onDrag) {
-      data.degree = this.degree
+      data.degree = this.degree;
       if (this.resizable) {
-        data.newWidth = this.resizable.size.width
-        data.newHeight = this.resizable.size.height
+        data.newWidth = this.resizable.size.width;
+        data.newHeight = this.resizable.size.height;
       }
       this.props.onDrag(e, data);
     }
@@ -306,10 +310,10 @@ export default class Rnd extends React.Component<Props, State> {
 
   onDragStop(e: Event, data: DraggableData) {
     if (this.props.onDragStop) {
-      data.degree = this.degree
+      data.degree = this.degree;
       if (this.resizable) {
-        data.newWidth = this.resizable.size.width
-        data.newHeight = this.resizable.size.height
+        data.newWidth = this.resizable.size.width;
+        data.newHeight = this.resizable.size.height;
       }
       this.props.onDragStop(e, data);
     }
@@ -317,7 +321,7 @@ export default class Rnd extends React.Component<Props, State> {
 
   onMoveSnap(data: any) {
     if (this.props.onMoveSnap) {
-      data.degree = this.degree
+      data.degree = this.degree;
 
       this.props.onMoveSnap(data);
     }
@@ -421,7 +425,7 @@ export default class Rnd extends React.Component<Props, State> {
       this.draggable.setState({ y });
     }
     if (this.props.onResize) {
-      delta.degree = delta.degree || this.degree
+      delta.degree = delta.degree || this.degree;
       this.props.onResize(
         e,
         direction,
@@ -447,7 +451,7 @@ export default class Rnd extends React.Component<Props, State> {
         x: this.draggable.state.x,
         y: this.draggable.state.y,
       };
-      delta.degree = delta.degree || this.degree
+      delta.degree = delta.degree || this.degree;
       this.props.onResizeStop(e, direction, refToResizableElement, delta, position);
     }
   }
@@ -513,6 +517,8 @@ export default class Rnd extends React.Component<Props, State> {
         position={this.props.position}
         enableUserSelectHack={false}
         degree={degree}
+        keyMoveEnabled={this.props.keyMoveEnabled}
+        keyMoveSpeed={this.props.keyMoveSpeed}
         keyMoveShiftStepLength={this.props.keyMoveShiftStepLength}
       >
         <Resizable
